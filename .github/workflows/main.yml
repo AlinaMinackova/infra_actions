@@ -6,10 +6,10 @@ on:
 # В шаблоне указан ивент push — это событие git push, а branches — это ветка, в которую должен быть сделан push, 
 # чтобы workflow запустился; можно указать и несколько веток. Workflow, описанный в шаблоне, сработает при пуше в ветку master (или main)
   push:
-    branches: [ master ]
+    branches: [ main ]
   # триггер на pull_request сработает, когда кто-то сделает запрос на изменение кода в ветке master
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 # Ключ jobs объединяет поименованные блоки команд — задачи, которые будут выполняться при запуске workflow.
 jobs:
   build:
