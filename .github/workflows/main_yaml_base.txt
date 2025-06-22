@@ -1,0 +1,29 @@
+#название workflow
+name: CI
+
+# событие, которое должно произойти, чтобы workflow начал выполняться
+on:
+# В шаблоне указан ивент push — это событие git push, а branches — это ветка, в которую должен быть сделан push,
+# чтобы workflow запустился; можно указать и несколько веток. Workflow, описанный в шаблоне, сработает при пуше в ветку master (или main)
+  push:
+    branches: [ main ]
+  # триггер на pull_request сработает, когда кто-то сделает запрос на изменение кода в ветке master
+  pull_request:
+    branches: [ main ]
+# Ключ jobs объединяет поименованные блоки команд — задачи, которые будут выполняться при запуске workflow.
+jobs:
+  build:
+    #  Настройки окружения
+    runs-on: ubuntu-latest
+    # Под ключом steps записывается перечень шагов, команд, которые будут выполнены в этом блоке
+    steps:
+    # клонирует репоиторий в среду GitHub Actions
+    - uses: actions/checkout@v2
+    # Каждому шагу можно дать имя — для этого применяется ключ name
+    - name: Run a one-line script
+      run: echo Hello, world!
+    - name: Run a multi-line script
+    # В ключе run хранится команда, которая будет выполнена в терминале окружения
+      run: |
+        echo Add other actions to build,
+        echo test, and deploy your project.
